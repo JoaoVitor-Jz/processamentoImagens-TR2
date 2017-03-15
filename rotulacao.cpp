@@ -24,7 +24,13 @@ void __fastcall TForm1::SpeedButton1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::SpeedButton2Click(TObject *Sender)
 {
-	int x, y, R, G, B, label = 1;
+	int x, y, R, G, B;
+	int **label;
+	
+	label = new int*[ Image1->Width ];		// 
+	for (x = 0; x < Image1->Width; x++)		// LABEL do tamanho da IMAGEM	
+		label[x] = new int[ Image1->Height ];	//
+	
 	for (x = 0; x < Image1->Width; x++) {
 		for (y = 0; y < Image1->Height; y++) {
 			cor = Image1->Canvas->Pixels[x][y];
@@ -42,18 +48,18 @@ void __fastcall TForm1::SpeedButton2Click(TObject *Sender)
 		for(y = 0; y < Image1->Height; y++){
 			if(Image1->Canvas->Pixels[x][y] == RGB(255,255,255)){
 				if(Image1->Canvas->Pixels[x-1][y] == RGB(0,0,0) && Image1->Canvas->Pixels[x][y-1] == RGB(0,0,0)){
-					 //Image1->Canvas->Pixels[x][y] = label;
+					 label[x][y] = ; // 0 ou 1
 				}
 				else{
 				   if(Image1->Canvas->Pixels[x-1][y] == RGB(255,255,255) || Image1->Canvas->Pixels[x][y-1] == RGB(255,255,255)){
-						//Image1->Canvas->Pixels[x][y] = label;
+						label[x][y] = ; // 0 ou 1
 				   }
 				   else{
-					   if(Image1->Canvas->Pixels[x-1][y] == RGB(255,255,255) || Image1->Canvas->Pixels[x][y-1] == RGB(255,255,255) /* && Fazer tratamento de verificar se as labels são iguais*/) {
-
+					   if(Image1->Canvas->Pixels[x-1][y] == RGB(255,255,255) || Image1->Canvas->Pixels[x][y-1] == RGB(255,255,255) /* && Fazer tratamento de verificar se as labels sÃ£o iguais*/) {
+						   label[x][y] = ; // 0 ou 1
 					   }
 					   else{
-                           //Fazer o último caso de teste
+                           //Fazer o Ãºltimo caso de teste
                        }
 				   }
 				}
